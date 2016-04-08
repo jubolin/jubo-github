@@ -5,21 +5,21 @@ var handle = Meteor.setInterval(function() {
     if(error) {
     } else {
       Meteor.clearInterval(handle);
+
+      github.subscribe("starRepository", function() {
+        // send http request
+        console.log('star respository');
+      });
+      
+      github.subscribe("addUserAsCollaborator", function() {
+        console.log('addd user as collaborator');
+      });
+      
+      github.subscribe("unstarRepository", function() {
+        console.log('unstar respository');
+      });
     }
   });
 },500);
-
-github.subscribe("starRepository", function() {
-  // send http request
-  console.log('star respository');
-});
-
-github.subscribe("addUserAsCollaborator", function() {
-  console.log('addd user as collaborator');
-});
-
-github.subscribe("unstarRepository", function() {
-  console.log('unstar respository');
-});
 
 
